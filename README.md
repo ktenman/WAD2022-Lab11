@@ -1,6 +1,5 @@
 # WAD2022-Lab11
 
-# WAD2022-Lab11-solution
 
 ## Pre-requisites
 Node.js \& NPM
