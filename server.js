@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const fs = require('fs')
 
 // listen for requests on port 3000
 app.listen(3000);
@@ -24,6 +25,14 @@ app.get('/posts', (req, res) => {
     res.sendFile('./views/posts.html', { root: __dirname });
 });
 
+app.get('/json', (req, res) => {
+    return res.status(202).json({answer : 4433})
+});
+
+app.get('/file', (req, res) => {
+    const raw = fs.readFileSync('myjson.json')
+    return res.json(JSON.parse(raw))
+})
 
 
 // We will discuss this method next week, when we speak about Middlewares
