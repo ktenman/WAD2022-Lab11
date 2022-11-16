@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const fs = require('fs')
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 // listen for requests on port 3000
 app.listen(3000);
@@ -32,6 +35,11 @@ app.get('/json', (req, res) => {
 app.get('/file', (req, res) => {
     const raw = fs.readFileSync('myjson.json')
     return res.json(JSON.parse(raw))
+})
+
+app.post('/login', (req, res) => {
+    console.log(req.body)
+    return res.json({status: "ok"})
 })
 
 
